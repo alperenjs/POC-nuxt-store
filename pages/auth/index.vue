@@ -34,6 +34,7 @@
 <script>
 export default {
   name: "loginPage",
+  template: "new",
   data: function () {
     return {
       registerActive: false,
@@ -47,8 +48,10 @@ export default {
   },
   methods: {
     async fetch(e) {
-    await this.$store.dispatch('auth/user_login', this.emailLogin)
-  },
+      await this.$store.dispatch("auth/user_login", this.emailLogin);
+
+      this.$router.push("/");
+    },
   },
 };
 </script>

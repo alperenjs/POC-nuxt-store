@@ -7,7 +7,7 @@ export default ($axios) => ({
       }
   },
 
-  logout(id) {
+  logout() {
     return true
   },
 })
