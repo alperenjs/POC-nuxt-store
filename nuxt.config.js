@@ -37,7 +37,7 @@ export default {
   ],
 
   axios: {
-    baseURL: process.env.API_BASE_URL || 'https://jsonplaceholder.typicode.com'
+    baseURL: process.env.API_BASE_URL || 'http://localhost:3000'
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

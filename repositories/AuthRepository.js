@@ -1,11 +1,13 @@
-const resource = '/auth'
 export default ($axios) => ({
-  login() {
-      console.log("auth login repostitry")
-    return $axios.get(`${resource}`)
+  login(payload) { //auth simulation
+      if(payload === "alperen@gmail.com"){ 
+          return true
+      }else{
+          return false
+      }
   },
 
   logout(id) {
-    return $axios.get(`${resource}/${id}`)
+    return true
   },
 })

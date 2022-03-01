@@ -46,8 +46,8 @@ export default {
     };
   },
   methods: {
-    async fetch({ store }) {
-    await this.$store.dispatch('auth/user_login')
+    async fetch(e) {
+    await this.$store.dispatch('auth/user_login', this.emailLogin)
   },
   },
 };
