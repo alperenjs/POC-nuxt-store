@@ -50,7 +50,7 @@ export const actions = {
     const res = await this.$repositories.auth.logout(user)
     // const { status, data } = res
     if (res) {
-      console.log("çıkış başarılı")
+      localStorage.removeItem("token")
       commit('setToken', null);
       commit('setAuthenticated', false);
     }

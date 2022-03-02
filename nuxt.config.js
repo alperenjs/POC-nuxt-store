@@ -39,6 +39,7 @@ export default {
 
   toast: {
     position: 'top-right',
+    duration : 1000
   },
 
   axios: {

@@ -16,8 +16,9 @@
       rel="stylesheet"
     />
     <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
-      <a class="flex justify-center pt-8 sm:pt-0">
+      <div class="justify-center pt-8 sm:pt-0 text-align-center">
         <svg
+          class="logo"
           width="218"
           height="45"
           viewBox="0 0 159 30"
@@ -53,7 +54,11 @@
             fill="#00DC82"
           />
         </svg>
-      </a>
+        <button v-on:click="logout" class="btn btn-outline-success">
+          Çıkış Yap
+        </button>
+      </div>
+
       <div class="mt-8 bg-white overflow-hidden shadow sm:rounded-lg p-6">
         <h2 class="text-2xl leading-7 font-semibold">Cat App</h2>
         <p class="mt-3 text-gray-600">
@@ -84,6 +89,11 @@ export default {
     async getRandom() {
       let data = await this.$store.dispatch("image/get_random");
     },
+
+    logout() {
+      this.$store.dispatch("auth/user_logout");
+      window.location.reload()
+    },
   },
   created() {
     this.getRandom();
@@ -99,14 +109,19 @@ export default {
 }
 
 .slide-fade-enter-active {
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 }
 .slide-fade-leave-active {
-  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
 }
 .slide-fade-enter, .slide-fade-leave-to
 /* .slide-fade-leave-active for <2.1.8 */ {
   transform: translateX(10px);
   opacity: 0;
+}
+
+.logo {
+  margin: 0 auto;
+  margin-bottom: 20px;
 }
 </style>
