@@ -16,7 +16,7 @@
       rel="stylesheet"
     />
     <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
-      <div class="justify-center pt-8 sm:pt-0 text-align-center">
+      <div class="logo-wrapper justify-center pt-8 sm:pt-0">
         <svg
           class="logo"
           width="218"
@@ -61,13 +61,22 @@
 
       <div class="mt-8 bg-white overflow-hidden shadow sm:rounded-lg p-6">
         <h2 class="text-2xl leading-7 font-semibold">Cat App</h2>
-        <p class="mt-3 text-gray-600">
-          Rastgele bir kedi için
-          <button class="btn btn-primary" v-on:click="getRandom">TIKLA</button>
-          <transition name="slide-fade" mode="out-in">
-            <img :key="image" class="cat-img" v-bind:src="image" alt="cat" />
-          </transition>
-        </p>
+        <div class="d-flex align-items-center">
+          <p class="mt-3 text-gray-600">Rastgele bir kedi için</p>
+          <button class="btn btn-primary new-img-btn" v-on:click="getRandom">
+            <div
+              v-if="isLoading"
+              class="spinner-border text-primary"
+              role="status"
+            >
+              <span class="sr-only">Loading...</span>
+            </div>
+            <p v-else>TIKLA</p>
+          </button>
+        </div>
+        <transition name="slide-fade" mode="out-in">
+          <img :key="image" class="cat-img" v-bind:src="image" alt="cat" />
+        </transition>
       </div>
     </div>
   </div>
@@ -78,6 +87,11 @@ import { mapState } from "vuex";
 
 export default {
   name: "Home",
+  data: () => {
+    return {
+      isLoading: true,
+    };
+  },
   computed: {
     ...mapState({
       image: (state) => {
@@ -87,12 +101,14 @@ export default {
   },
   methods: {
     async getRandom() {
+      this.isLoading = true;
       let data = await this.$store.dispatch("image/get_random");
+      this.isLoading = false;
     },
 
     logout() {
       this.$store.dispatch("auth/user_logout");
-      window.location.reload()
+      window.location.reload();
     },
   },
   created() {
@@ -102,10 +118,17 @@ export default {
 </script>
 
 <style scoped>
+.logo-wrapper {
+  text-align: center !important;
+}
 .cat-img {
   width: auto;
   max-height: 340px;
   margin-top: 30px;
+}
+
+.new-img-btn {
+  margin-left: 15px;
 }
 
 .slide-fade-enter-active {

@@ -7,7 +7,6 @@ export const state = () => ({
 
 export const mutations = {
   setToken(state, token) {
-    console.log("token bastım", token)
     state.token = token;
   },
   clearToken(state) {
@@ -23,26 +22,12 @@ export const actions = {
     const res = await this.$repositories.auth.login(user)
     // const { status, data } = res
     if (res) {
-      console.log("giriş başarılı")
       const token = Math.random() * 10;
       commit('setToken', token);
       commit('setAuthenticated', true);
       localStorage.setItem("token", token);
     } else {
       this.$toast.error('Giriş Başarısız - Kullanıcı Adı: test')// Handle error here
-    }
-  },
-
-  isAuthorized(state) {
-    console.log(localStorage)
-    console.log("ali", state.token)
-    let token;
-
-    if (token) {
-      console.log("varmış", token)
-      return true
-    } else {
-      return false
     }
   },
 

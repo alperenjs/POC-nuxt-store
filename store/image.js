@@ -16,7 +16,6 @@ export const actions = {
             commit('setImage', res.data[0].url);
             return res.data[0].url
         } else {
-            console.log("başarısz")
             // Handle error here
         }
     },
