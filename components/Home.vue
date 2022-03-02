@@ -16,9 +16,7 @@
       rel="stylesheet"
     />
     <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
-      <a
-        class="flex justify-center pt-8 sm:pt-0"
-      >
+      <a class="flex justify-center pt-8 sm:pt-0">
         <svg
           width="218"
           height="45"
@@ -59,9 +57,11 @@
       <div class="mt-8 bg-white overflow-hidden shadow sm:rounded-lg p-6">
         <h2 class="text-2xl leading-7 font-semibold">Cat App</h2>
         <p class="mt-3 text-gray-600">
-          Rastgele bir kedi için 
+          Rastgele bir kedi için
           <button class="btn btn-primary" v-on:click="getRandom">TIKLA</button>
-          <img class="cat-img" v-bind:src="image" alt="cat" /><br />
+          <transition name="slide-fade" mode="out-in">
+            <img :key="image" class="cat-img" v-bind:src="image" alt="cat" />
+          </transition>
         </p>
       </div>
     </div>
@@ -98,4 +98,15 @@ export default {
   margin-top: 30px;
 }
 
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active for <2.1.8 */ {
+  transform: translateX(10px);
+  opacity: 0;
+}
 </style>
