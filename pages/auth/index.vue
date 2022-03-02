@@ -34,8 +34,9 @@
 <script>
 export default {
   name: "loginPage",
-  template: "new",
-  data: function () {
+  template: "auth",
+
+data: function () {
     return {
       registerActive: false,
       emailLogin: "",

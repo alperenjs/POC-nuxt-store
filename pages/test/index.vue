@@ -8,6 +8,6 @@
 <script>
 export default {
   name: "test",
-  middleware: "auth",
+  template: "default"
 };
 </script>

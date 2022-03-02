@@ -32,16 +32,17 @@ export const actions = {
     }
   },
 
-  initAuth() {
+  isAuthorized(state) {
+    console.log(localStorage)
+    console.log("ali", state.token)
     let token;
-    let expirationDate;
-    token = localStorage.getItem("token");
-    if(token){
+
+    if (token) {
       console.log("varmış", token)
-      commit('setToken', token);
       return true
+    } else {
+      return false
     }
-    // vuexContext.commit("setToken", token);
   },
 
   async user_logout({ commit }, user) {

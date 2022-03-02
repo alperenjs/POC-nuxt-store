@@ -37,7 +37,7 @@ export default {
   ],
 
   axios: {
-    baseURL: process.env.API_BASE_URL || 'http://localhost:3000'
+    baseURL: process.env.API_BASE_URL || 'https://api.thecatapi.com/v1'
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
