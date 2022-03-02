@@ -1,3 +1,5 @@
+import toastr from 'toastr'
+
 export const state = () => ({
   token: null,
   authenticated: false
@@ -27,8 +29,7 @@ export const actions = {
       commit('setAuthenticated', true);
       localStorage.setItem("token", token);
     } else {
-      console.log("giriş başarısız")
-      // Handle error here
+      this.$toast.error('Giriş Başarısız - Kullanıcı Adı: test')// Handle error here
     }
   },
 

@@ -34,7 +34,12 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     '@nuxtjs/axios',
+    '@nuxtjs/toast',
   ],
+
+  toast: {
+    position: 'top-right',
+  },
 
   axios: {
     baseURL: process.env.API_BASE_URL || 'https://api.thecatapi.com/v1'

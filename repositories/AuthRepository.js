@@ -1,6 +1,6 @@
 export default ($axios) => ({
   login(payload) { //auth simulation
-      if(payload === "alperen@gmail.com"){ 
+      if(payload === "test"){ 
           return true
       }else{
           return false
